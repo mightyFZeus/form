@@ -1,15 +1,20 @@
 import React from "react";
 
+
+
 interface IInput {
 	placeholder: string;
 	type: string;
 	label: string;
 	formikTouched: boolean | undefined;
 	formikErrors: string | undefined;
-	getFieldProps:  object;
+    getFieldProps: object;
     additional?: string;
     star?: boolean;
+    value?: string;
 }
+
+
 
 const PrimaryInput: React.FC<IInput> = ({
 	type,
@@ -19,8 +24,14 @@ const PrimaryInput: React.FC<IInput> = ({
     formikErrors,
     formikTouched,
     getFieldProps,
-    star
+    star,
+    value
 }) => {
+
+
+
+
+
 	return (
 		<div className="mb-5">
             <p className="font-bold mb-3 whitespace-nowrap">{label} {star && <span className='text-[#ff0000]'>*</span>}</p>
@@ -30,7 +41,7 @@ const PrimaryInput: React.FC<IInput> = ({
 			<div className="border-darkBlue border bg-white rounded-md p-2">
 				<input
 					type={type}
-					className="w-full h-full outline-none"
+					className="w-full h-full outline-none "
                     placeholder={placeholder}
                     {...getFieldProps}
 				/>

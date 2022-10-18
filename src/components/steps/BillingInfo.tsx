@@ -19,25 +19,21 @@ const BillingInfo: React.FC<IBillingInfo> = ({ moveToNextStep }) => {
 		return <ItemDetails moveToNextStep={moveToNextStep} />;
 	}
 
-
-
-  
-
 	return (
-    <div className="mt-10 pb-10 lg:pb-20">
+		<div className="mt-10 pb-10 lg:pb-20">
 			<Formik
 				initialValues={{
 					name: "",
-					details: "",
+					CardNumber: "",
 					expiryDate: "",
 					ccv: "",
 					c: "",
 				}}
 				validationSchema={Yup.object({
 					name: Yup.string().required(" Name of card is required"),
-					details: Yup.string().required("Card details is required"),
-					expiryDate: Yup.string().required("ExpiryDate is required"),
-					ccv: Yup.string().required(" Cvv is required").max(3),
+					CardNumber: Yup.string().required("Card Number is required").length(16),
+					expiryDate: Yup.string().required("ExpiryDate is required").length(5),
+					ccv: Yup.string().required(" Cvv is required").length(3),
 					c: Yup.string().required("Card type is required"),
 				})}
 				onSubmit={(values, { setSubmitting }) => {
@@ -72,20 +68,20 @@ const BillingInfo: React.FC<IBillingInfo> = ({ moveToNextStep }) => {
 						<div className="md:flex gap-2 justify-between">
 							<div className="md:w-[55%]">
 								<PrimaryInput
-									type="text"
+									type="number"
 									label="Card Details"
 									placeholder="44960 44960 44960 44960"
-									formikTouched={formik.touched.details}
-									formikErrors={formik.errors.details}
+									formikTouched={formik.touched.CardNumber}
+									formikErrors={formik.errors.CardNumber}
 									getFieldProps={{
-										...formik.getFieldProps("details"),
+										...formik.getFieldProps("CardNumber"),
 									}}
 									star
 								/>
 							</div>
 							<div className="md:w-[17%]">
 								<PrimaryInput
-									type="text"
+									type=""
 									label="Expiry Date"
 									placeholder="04 / 23"
 									formikTouched={formik.touched.expiryDate}
@@ -98,7 +94,7 @@ const BillingInfo: React.FC<IBillingInfo> = ({ moveToNextStep }) => {
 							</div>
 							<div className="md:w-[17%]">
 								<PrimaryInput
-									type="text"
+									type="number"
 									label="CVV"
 									placeholder="923"
 									formikTouched={formik.touched.ccv}
