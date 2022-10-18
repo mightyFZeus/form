@@ -7,7 +7,8 @@ interface IInput {
 	formikTouched: boolean | undefined;
 	formikErrors: string | undefined;
 	getFieldProps:  object;
-	additional?: string;
+    additional?: string;
+    star?: boolean;
 }
 
 const PrimaryInput: React.FC<IInput> = ({
@@ -17,11 +18,12 @@ const PrimaryInput: React.FC<IInput> = ({
     placeholder,
     formikErrors,
     formikTouched,
-    getFieldProps
+    getFieldProps,
+    star
 }) => {
 	return (
 		<div className="mb-5">
-			<p className="font-bold mb-3">{label}</p>
+            <p className="font-bold mb-3 whitespace-nowrap">{label} {star && <span className='text-[#ff0000]'>*</span>}</p>
 			{additional && (
 				<p className="text-gray mb-1 text-sm">{additional}</p>
 			)}
