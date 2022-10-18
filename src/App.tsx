@@ -5,7 +5,7 @@ import ConfirmPayment from "./components/steps/ConfirmPayment";
 import PersonalInfo from "./components/steps/PersonalInfo";
 
 const App = () => {
-	const [currentStep, setCurrentStep] = useState(1);
+	const [currentStep, setCurrentStep] = useState(0);
 
 	const moveToNextStep = () => {
 		setCurrentStep((prevStep) => prevStep + 1);
