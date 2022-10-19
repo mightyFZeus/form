@@ -5,11 +5,15 @@ import ConfirmPayment from "./components/steps/ConfirmPayment";
 import PersonalInfo from "./components/steps/PersonalInfo";
 
 const App = () => {
-	const [currentStep, setCurrentStep] = useState(0);
+	const [currentStep, setCurrentStep] = useState(1);
 
 	const moveToNextStep = () => {
 		setCurrentStep((prevStep) => prevStep + 1);
 	};
+
+	const goToFirstPage = () => {
+		setCurrentStep(0)
+	}
 
 	return (
 		<div className="gradient h-screen">
@@ -20,7 +24,7 @@ const App = () => {
 				) : currentStep === 1 ? (
 					<BillingInfo moveToNextStep={moveToNextStep} />
 				) : (
-					<ConfirmPayment />
+							<ConfirmPayment goToFirstPage={goToFirstPage} />
 				)}
 			</div>
 		</div>

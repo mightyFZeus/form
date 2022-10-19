@@ -1,7 +1,11 @@
 import React from 'react'
 import check from '../../assets/images/Vector.png'
 
-const ConfirmPayment = () => {
+interface IConfirm {
+  goToFirstPage : () =>void;
+}
+
+const ConfirmPayment = ({ goToFirstPage }: IConfirm) => {
   return (
     <div className='flex justify-center items-center h-full w-full'>
 
@@ -14,7 +18,7 @@ const ConfirmPayment = () => {
         <p className='mt-6 text-center lg:text-left '>Please check your email for details concerning
           this transaction</p>
         
-        <p className='font-bold text-primaryYellow underline text-center lg:mr-auto mt-10'>Return Home</p>
+        <p onClick={goToFirstPage} className='font-bold cursor-pointer text-primaryYellow underline text-center lg:mr-auto mt-10'>Return Home</p>
 
       </div>
     </div>

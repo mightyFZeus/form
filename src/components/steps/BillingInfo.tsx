@@ -81,7 +81,7 @@ const BillingInfo: React.FC<IBillingInfo> = ({ moveToNextStep }) => {
 							</div>
 							<div className="md:w-[17%]">
 								<PrimaryInput
-									type="number"
+									type="text"
 									label="Expiry Date"
 									placeholder="04 / 23"
 									formikTouched={formik.touched.expiryDate}
